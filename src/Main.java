@@ -5,6 +5,8 @@ public class Main {
         System.out.println("This is Bluejack game");
         System.out.println("Game is starting!");
         Deck deck=new Deck();
-        Game game=new Game();
+
+
     }
+
 }

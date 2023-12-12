@@ -9,6 +9,7 @@ import java.util.Scanner;
         private String[] deck;
 
         public Deck() {
+
             String colors[] = {"R", "G", "B", "Y"};
             String numbers[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
             deck = new String[40];
@@ -26,21 +27,42 @@ import java.util.Scanner;
                 deck[k] = deck[x];
                 deck[x] = y;
             }
-            //for(int c=0;c<deck.length;c++){ System.out.println(deck[c]);}
-
-            computer_hand=deck[0]+"+";
-            player_hand=deck[39]+"+";
-            computer_hand+=deck[1]+"+";
-            player_hand+=deck[38]+"+";
-            computer_hand+=deck[2]+"+";
-            player_hand+=deck[37]+"+";
-            computer_hand+=deck[3]+"+";
-            player_hand+=deck[36]+"+";
-            computer_hand+=deck[4];
-            player_hand+=deck[35];
+            //for(int c=0;c<deck.length;c++){System.out.println(deck[c]);}
+            //System.out.println("computer_hand:"+ computer_hand);
+            //System.out.println("player_hand:"+ player_hand);
 
 
 
+            String computer_hand= "";
+            String player_hand= "";
+            for(int g=0;g<5;g++){
+                computer_hand += deck[g]+ ",";
+                player_hand += deck[deck.length-1-g]+ ",";
+            }
+
+            String[] signs = {"+", "-"};
+            Random random = new Random();
+            for (int h = 0; h < 3; h++) {
+                String sign = signs[random.nextInt(signs.length)];
+                String color = colors[random.nextInt(colors.length)];
+                int value = random.nextInt(6) + 1;   //values between 1 and 6
+                //System.out.println("Card" + h + " " + sign + color + value);
+                computer_hand += "," + sign + color + value;
+                if(h==2) {
+                    System.out.println("Computer_hand:" + computer_hand);
+                }
+            }
+            for(int k=0;k<3;k++){
+                String sign = signs[random.nextInt(signs.length)];
+                String color = colors[random.nextInt(colors.length)];
+                int value = random.nextInt(6) + 1;   //values between 1 and 6
+                //System.out.println("Card" + k + " " + sign + color + value);
+                player_hand += "," + sign + color + value;
+                if(k==2) {
+                    System.out.println("Player_hand:" + player_hand);
+                }
+            }
         }
+
     }
 
