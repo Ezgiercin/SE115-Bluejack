@@ -4,6 +4,8 @@ import java.util.Scanner;
     public class Deck {
         String computer_hand;
         String player_hand;
+        String final_computer_hand;
+        String final_player_hand;
         Scanner sc = new Scanner(System.in);
         Random r = new Random(System.currentTimeMillis());
         private String[] deck;
@@ -117,16 +119,33 @@ import java.util.Scanner;
             }
             System.out.println("Player_hand:" + player_hand);
 
+
             String[] computerhandArray = computer_hand.split(",");
             String[] finalcomputerArray = new String[4];
             for (int p = 0; p < 4; p++) {
-                int RandomIndex = random.nextInt(computerhandArray.length);
-                finalcomputerArray[p] = computerhandArray[RandomIndex];
-                computer_hand = finalcomputerArray[0] + "," + finalcomputerArray[1] + "," + finalcomputerArray[2] + "," + finalcomputerArray[3];
+                int RandomIndex;
+                do {
+                    RandomIndex= random.nextInt(10);
+                }while(computerhandArray[RandomIndex]==null);
+                    finalcomputerArray[p]=computerhandArray[RandomIndex];
+                    computerhandArray[RandomIndex]=null;
+                    final_computer_hand=finalcomputerArray[0]+","+finalcomputerArray[1]+","+finalcomputerArray[2]+","+finalcomputerArray[3];
             }
-            System.out.println("Computer_hand:" + computer_hand);
+            System.out.println("Computer_hand:" + final_computer_hand);
 
-            //AYNI KARTI RANDOM SEÇMESİNİ ENGELLE
+            String[] playerhandArray = player_hand.split(",");
+            String[] finalplayerArray = new String[4];
+            for(int s=0;s<4;s++){
+                int RandomIndex2;
+                do {
+                    RandomIndex2= random.nextInt(10);
+                }while (playerhandArray[RandomIndex2]==null);
+                finalplayerArray[s]=playerhandArray[RandomIndex2];
+                playerhandArray[RandomIndex2]=null;
+                final_player_hand=finalplayerArray[0]+","+finalplayerArray[1]+","+finalplayerArray[2]+","+finalplayerArray[3];
+            }
+            System.out.println("Player_hand:" + final_player_hand);
+
         }
     }
     
