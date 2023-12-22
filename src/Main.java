@@ -21,7 +21,6 @@ public class Main {
         String[][] playerHandArray = deck.getPlayerHandArray();
         String[][] finalGameDeck = deck.getFinalGameDeck();
 
-
         boolean isGamePlaying = true;
         while (isGamePlaying) {
 
@@ -41,9 +40,10 @@ public class Main {
                 if (!isPlayerStand) {
                     System.out.println("Player's turn");
                     System.out.println(Arrays.deepToString(playerHandArray));
-                    System.out.println("1-Ask for a card from the game deck");
-                    System.out.println("2-Play a card from your hand");
-                    System.out.println("3-Stand");
+                    System.out.println("a-Ask for a card from the game deck");
+                    System.out.println("b-Play a card from your hand");
+                    System.out.println("c-Stand");
+                    System.out.println("Enter 1, 2 or 3");
                     int choice = sc.nextInt();
                     switch (choice) {
                         case 1:
@@ -51,17 +51,18 @@ public class Main {
                             playerScore += drawnCardPlayer;
                             playerBoardSize++;
                             gameDeckCounter++;
-                            if (finalGameDeck[gameDeckCounter][2].equals("B")){   //mavi mi kontrol
+                            if (finalGameDeck[gameDeckCounter][1].equals("B")){   //mavi mi kontrol
                                 bluePlayerCounter++;
                             }
                             break;
                         case 2:
                             System.out.println("Which card do you want to use: 1, 2, 3 or 4");
+                            System.out.println("Enter 1, 2, 3 or 4");
                             int number=sc.nextInt();
                             switch (number){
                                 case 1:
                                     if (playerHandArray[0][0].equals("x2")){
-                                        playerScore += drawnCardPlayer;
+                                        playerScore += drawnCardPlayer * 1;
                                         playerBoardSize++;
                                         playerHandArray[0][0]=null;
                                     } else if (playerHandArray[0][0].equals("+/-")) {
@@ -78,7 +79,8 @@ public class Main {
                                             bluePlayerCounter++;
                                         }
                                     } else {
-                                        playerScore+=drawnCardPlayer;
+                                        int a=Integer.parseInt(playerHandArray[0][0]);
+                                        playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[0][0]=null;
                                         if (playerHandArray[0][2].equals("B")){
@@ -105,7 +107,8 @@ public class Main {
                                             bluePlayerCounter++;
                                         }
                                     } else {
-                                        playerScore+=drawnCardPlayer;
+                                        int a=Integer.parseInt(playerHandArray[1][0]);
+                                        playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[1][0]=null;
                                         if (playerHandArray[1][2].equals("B")){
@@ -132,7 +135,8 @@ public class Main {
                                             bluePlayerCounter++;
                                         }
                                     } else {
-                                        playerScore+=drawnCardPlayer;
+                                        int a=Integer.parseInt(playerHandArray[2][0]);
+                                        playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[2][0]=null;
                                         if (playerHandArray[2][2].equals("B")){
@@ -159,7 +163,8 @@ public class Main {
                                             bluePlayerCounter++;
                                         }
                                     } else {
-                                        playerScore+=drawnCardPlayer;
+                                        int a=Integer.parseInt(playerHandArray[3][0]);
+                                        playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[3][0]=null;
                                         if (playerHandArray[3][2].equals("B")){
@@ -168,6 +173,7 @@ public class Main {
                                     }
                                     break;
                             }
+                            break;
                         case 3:
                             System.out.println("Player chose to stand");
                             if (computerScore >= 17) {
@@ -184,7 +190,7 @@ public class Main {
                     gameDeckCounter++;
                     computerBoardSize++;
                     computerScore += drawnCardComputer;
-                    if (finalGameDeck[gameDeckCounter][2].equals("B")){   //mavi mi kontrol et
+                    if (finalGameDeck[gameDeckCounter][1].equals("B")){   //mavi mi kontrol et
                         blueComputerCounter++;
                     }
 
@@ -292,7 +298,7 @@ public class Main {
                     playerBoardSize = 0;
                     blueComputerCounter=0;
                     bluePlayerCounter=0;
-                } else {   //playerın açtığı tüm kartlar maviyse ve skoru 20 ise kazanır
+                } else if ((bluePlayerCounter==playerBoardSize) && playerScore==20){   //playerın açtığı tüm kartlar maviyse ve skoru 20 ise kazanır
                     playerSetScore++;
                     isSetPlaying = false;
                     computerBoardSize = 0;
