@@ -64,9 +64,7 @@ public class Deck {
             int value = random.nextInt(6) + 1;   //values between 1 and 6
             //System.out.println("Card" + h + " " + sign + color + value);
             computer_hand += "," + sign + value + color;
-            if (h == 2) {
-                System.out.println("Computer_hand:" + computer_hand);
-            }
+            //if (h == 2) {System.out.println("Computer_hand:" + computer_hand);}
         }
         for (int k = 0; k < 3; k++) {
             String sign = signs[random.nextInt(signs.length)];
@@ -74,9 +72,7 @@ public class Deck {
             int value = random.nextInt(6) + 1;   //values between 1 and 6
             //System.out.println("Card" + k + " " + sign + color + value);
             player_hand += "," + sign + value + color;
-            if (k == 2) {
-                System.out.println("Player_hand:" + player_hand);
-            }
+            //if (k == 2) {System.out.println("Player_hand:" + player_hand);}
         }
 
 
@@ -100,7 +96,7 @@ public class Deck {
                 }
             }
         }
-        System.out.println("Computer_hand:" + computer_hand);
+        //System.out.println("Computer_hand:" + computer_hand);
 
         int[] arr = {0, 1, 1, 1, 1};
         int value3 = random.nextInt(2);   //values are 0 and 1
@@ -122,7 +118,7 @@ public class Deck {
                 }
             }
         }
-        System.out.println("Player_hand:" + player_hand);
+        //System.out.println("Player_hand:" + player_hand);
 
 
         String[] computerhandArray = computer_hand.split(",");
@@ -149,7 +145,7 @@ public class Deck {
                 computerHandArray[k][2] = String.valueOf(finalcomputerArray[k].toCharArray()[2]);
             }
         }
-        System.out.println("Computer_hand:" + final_computer_hand);
+        System.out.println("Computer_hand:X, X, X, X" );
 
         String[] playerhandArray = player_hand.split(",");
         String[] finalplayerArray = new String[4];

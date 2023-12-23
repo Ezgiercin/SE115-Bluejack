@@ -6,14 +6,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int playerSetScore = 0;
         int computerSetScore = 0;
-        int playerScore = 0;
+        int playerScore=0;
         int computerScore = 0;
-        String[] playerBoard = new String[9];
         int playerBoardSize = 0;
         int computerBoardSize = 0;
         int gameDeckCounter = 0;
 
-        System.out.println("Welcome to Bluejack game");
+        System.out.println("Welcome to BlueJack game");
         System.out.println("Game is starting!");
         Deck deck = new Deck();
 
@@ -40,9 +39,9 @@ public class Main {
                 if (!isPlayerStand) {
                     System.out.println("Player's turn");
                     System.out.println(Arrays.deepToString(playerHandArray));
-                    System.out.println("a-Ask for a card from the game deck");
-                    System.out.println("b-Play a card from your hand");
-                    System.out.println("c-Stand");
+                    System.out.println("1-Ask for a card from the game deck");
+                    System.out.println("2-Play a card from your hand");
+                    System.out.println("3-Stand");
                     System.out.println("Enter 1, 2 or 3");
                     int choice = sc.nextInt();
                     switch (choice) {
@@ -51,7 +50,7 @@ public class Main {
                             playerScore += drawnCardPlayer;
                             playerBoardSize++;
                             gameDeckCounter++;
-                            if (finalGameDeck[gameDeckCounter][1].equals("B")){   //mavi mi kontrol
+                            if (finalGameDeck[gameDeckCounter][1].equals("B")){   //is the card blue
                                 bluePlayerCounter++;
                             }
                             break;
@@ -75,7 +74,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[0][0]=null;
-                                        if (playerHandArray[0][2].equals("B")){
+                                        if (playerHandArray[0][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     } else {
@@ -83,7 +82,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[0][0]=null;
-                                        if (playerHandArray[0][2].equals("B")){
+                                        if (playerHandArray[0][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     }
@@ -103,7 +102,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[1][0]=null;
-                                        if (playerHandArray[1][2].equals("B")){
+                                        if (playerHandArray[1][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     } else {
@@ -111,7 +110,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[1][0]=null;
-                                        if (playerHandArray[1][2].equals("B")){
+                                        if (playerHandArray[1][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     }
@@ -131,7 +130,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[2][0]=null;
-                                        if (playerHandArray[2][2].equals("B")){
+                                        if (playerHandArray[2][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     } else {
@@ -139,7 +138,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[2][0]=null;
-                                        if (playerHandArray[2][2].equals("B")){
+                                        if (playerHandArray[2][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     }
@@ -159,7 +158,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[3][0]=null;
-                                        if (playerHandArray[3][2].equals("B")){
+                                        if (playerHandArray[3][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     } else {
@@ -167,7 +166,7 @@ public class Main {
                                         playerScore+=a;
                                         playerBoardSize++;
                                         playerHandArray[3][0]=null;
-                                        if (playerHandArray[3][2].equals("B")){
+                                        if (playerHandArray[3][2].equals("B")){  //is the card blue
                                             bluePlayerCounter++;
                                         }
                                     }
@@ -184,26 +183,26 @@ public class Main {
                     }
                 }
 
-                if (computerScore < 17) {   //computerın kart çekme koşulu
-                    drawnCardComputer = Integer.parseInt(finalGameDeck[gameDeckCounter][0]);  //computer ilk kartını çekti
+                if (computerScore < 17) {   //computer can draw or play a card if it's score suitable for this condition
+                    drawnCardComputer = Integer.parseInt(finalGameDeck[gameDeckCounter][0]);  //computer drawn first card
                     System.out.println("Computer drawn "+ drawnCardComputer);
                     gameDeckCounter++;
                     computerBoardSize++;
                     computerScore += drawnCardComputer;
-                    if (finalGameDeck[gameDeckCounter][1].equals("B")){   //mavi mi kontrol et
+                    if (finalGameDeck[gameDeckCounter][1].equals("B")){   //is this card blue
                         blueComputerCounter++;
                     }
 
                     for (int i = 0; i < 4; i++) {
                         if (computerHandArray[i][0] != null) {
-                            if (computerHandArray[i][0].equals("x2")) {  //elindeki double kartı kullanma kısmı
+                            if (computerHandArray[i][0].equals("x2")) {
                                 if ((drawnCardComputer * 1 + computerScore) == 20) {
                                     computerScore += drawnCardComputer * 1;
                                     computerBoardSize++;
                                     computerHandArray[i][0] = null;
                                     break;
                                 }
-                            } else if (computerHandArray[i][0].equals("+/-")) {  //elindeki flip kartı kullanma kısmı
+                            } else if (computerHandArray[i][0].equals("+/-")) {
                                 if (computerScore > 20) {
                                     computerScore = computerScore - 2 * drawnCardComputer;
                                     computerHandArray[i][0] = null;
@@ -211,7 +210,7 @@ public class Main {
                                     break;
                                 }
                             } else {
-                                int a = Integer.parseInt(computerHandArray[i][0]);  //elindeki özel kartlar dışındaki kartları kullanma kısmı
+                                int a = Integer.parseInt(computerHandArray[i][0]);
                                 if (computerHandArray[i][1].equals("-")){
                                     a=a*(-1);
                                 }
@@ -219,7 +218,7 @@ public class Main {
                                     computerScore += a;
                                     computerHandArray[i][0] = null;
                                     computerBoardSize++;
-                                    if (computerHandArray[i][2].equals("B")){
+                                    if (computerHandArray[i][2].equals("B")){  //is the card blue
                                         blueComputerCounter++;
                                     }
                                     break;
@@ -291,14 +290,14 @@ public class Main {
                         bluePlayerCounter=0;
                     }
                     isSetPlaying=false;
-                } else if ((blueComputerCounter==computerBoardSize) && computerScore==20) {   //computerın açtığı tüm kartlar maviyse ve skoru 20 ise kazanır
+                } else if ((blueComputerCounter==computerBoardSize) && computerScore==20) {
                     computerSetScore++;
                     isSetPlaying = false;
                     computerBoardSize = 0;
                     playerBoardSize = 0;
                     blueComputerCounter=0;
                     bluePlayerCounter=0;
-                } else if ((bluePlayerCounter==playerBoardSize) && playerScore==20){   //playerın açtığı tüm kartlar maviyse ve skoru 20 ise kazanır
+                } else if ((bluePlayerCounter==playerBoardSize) && playerScore==20){
                     playerSetScore++;
                     isSetPlaying = false;
                     computerBoardSize = 0;
@@ -310,14 +309,13 @@ public class Main {
                 System.out.println("Player score:"+playerScore);
                 System.out.println("Computer score:"+computerScore);
 
-                if ((gameDeckCounter == 30) || playerSetScore >= 3 || computerSetScore >= 3) {
+                if ((gameDeckCounter == 29) || playerSetScore >= 3 || computerSetScore >= 3) {
                     isGamePlaying = false;
                     isSetPlaying = false;
                     break;
                 }
 
             }
-
 
             System.out.println("Player:" + playerSetScore + " - Computer:" + computerSetScore);
         }
